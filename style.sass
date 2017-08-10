@@ -1,0 +1,103 @@
+//Variables
+
+//Palette(http://www.colourlovers.com/palette/3175/japantech)
+$lcd: #D9EB0F
+$screen: #0076A3
+$print: #105981
+$buttons: #3E6E83
+$body: #0E4A65
+$back: #082735
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Press+Start+2P')
+$display: "Press Start 2P"
+$btn: "Inconsolata"
+
+//CSS
+body
+  background: $back
+  #calc-cont
+    width: 420px
+    max-width: 420px
+    height: 640px
+    max-height: 640px
+    margin: 5% auto
+  #sign
+    text-align: center
+    font-family: $display
+    color: $print
+    font-size: .7em
+    a
+      color: $lcd
+      text-decoration: none
+  #calc
+    width: 100%
+    height: 100%
+    padding: 2% 0%
+    background: $body
+    border-radius: 35px
+    border-top: 6px solid $screen
+    border-right: 6px solid #04171F
+    border-bottom: 6px solid #04171F
+    border-left: 6px solid $screen
+    #title
+      text-align: center
+      font-family: $display
+      color: $screen
+    #body
+      width: 100%
+      text-align: center
+      #display
+        height: 100px
+        background: $screen
+        text-align: right
+        margin-bottom: .6em
+        overflow: hidden
+        color: $lcd
+        border-top: 3px solid $back
+        border-bottom: 3px solid $back
+        i
+          float: left
+          margin: 3% 0% 0% 3%
+        h1,h4
+          font-family: $display
+          margin: 3% 3% 0% 0%
+      .keys
+        list-style: none
+        padding: 0
+        width: 66%
+        float: left
+        button
+          width: 4em
+          height: 4em
+          border-radius: 20px
+          border-top: 3px solid $buttons
+          border-right: 3px solid $back
+          border-bottom: 3px solid $back
+          border-left: 3px solid $buttons
+          background-color: $print
+          color: $lcd
+          font-family: $btn
+          font-size: 1em
+        &#op
+          width: 33%
+          margin-top: -18.5%
+          li
+            margin: .8em 0em
+            button
+              width: 6em
+            &:last-child
+              button
+                background-color: $lcd
+                color: $body
+        &#ctrl
+          margin-bottom: -.3em
+          li
+            float: right
+            display: inline-block
+            margin: .3em .5em
+        &#nums
+          @extend #ctrl
+          li
+            &:nth-child(10)
+              button
+                width: 9em

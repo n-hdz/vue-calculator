@@ -1,0 +1,36 @@
+section#calc-cont
+  #calc
+    h1#title NCODE
+    #body
+      #display
+        i.fa.fa-battery-full
+        h1 ${ result }
+        h4 ${ print_out }
+      ul.keys#ctrl
+        li
+          button v-on:click="clearNum" C
+        li
+          button v-on:click="erraseNum" E
+        li
+          button v-on:click="canTrip()"
+            i.fa.fa-bell
+      ul.keys#nums
+        - digits = 9..0
+        - (digits.first).downto(digits.last).each do |n|
+          li
+            button v-on:click="getNum(#{n})" #{n}
+        li
+          button v-on:click="makeFloat" .
+      ul.keys#op
+        li
+          button v-on:click="sumOp()" &plus;
+        li
+          button v-on:click="subOp()" &minus;
+        li
+          button v-on:click="divideOp()" &#47;
+        li
+          button v-on:click="timesOp()" &times;
+        li
+          button v-on:click="getResult()" &equals;
+  #sign
+    p Designed and Coded by <a href="https://github.com/n-hdz" target="_blank">n_hdz</a>
