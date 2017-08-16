@@ -19,10 +19,20 @@ var app = new Vue({
       this.print_out = "THANK YOU! BE SURE TO STAR ON GITHUB!";
     },
 
-    clearNum: function() {;
+    clearNum: function() {
+      this.memory = [];
+      this.operands = [];
+      this.operand = "";
+      this.operator = "";
+      this.print_out = "";
+      this.evaluated = false;
+      this.result = 0;
     },
 
     erraseNum: function() {
+      this.flushMem()
+      this.operands.pop()
+      this.print_out = this.operands.join('')
     },
 
     getNum: function(n) {
@@ -41,9 +51,7 @@ var app = new Vue({
       } else { 
         this.operands.push(this.operand.toString());
       }
-      console.log("In operands at call: " + this.operands + " Length: " + this.operands.length);
       if(this.evaluated){this.operands.push(this.result.toString(), this.operator)}
-      console.log("In operands after call: " + this.operands + " Length: " + this.operands.length);
       this.flushMem();
     },
     
@@ -93,6 +101,15 @@ var app = new Vue({
       this.flushMem();
       this.print_out = this.result.toString();
       this.evaluated = true
+    },
+    
+    solveOperation: function() {
+      this.operands.push(this.memory.toString());
+      this.result = eval(this.operands.join(''));
+      this.flushOp();
+      this.flushMem();
+      this.print_out = "";
+      this.evaluated = false;
     },
     
 //flushers
